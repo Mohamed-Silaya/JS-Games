@@ -3,7 +3,7 @@ This is a simple **Tic-Tac-Toe (X/O)** game built using **HTML, CSS, and JavaScr
 
 ---
 ## Demo 📺
-![)
+![Demo](https://github.com/Mohamed-Silaya/X-O-Game/blob/main/X-O%20game.png)
 ---
 
 ## 🛠️ Technologies Used
@@ -12,7 +12,7 @@ This is a simple **Tic-Tac-Toe (X/O)** game built using **HTML, CSS, and JavaScr
 - **JavaScript (Vanilla JS)** - For game logic and interactivity
 ## 🚀 How to Run the Project
 1. Download or clone the repository.
-2. Open the `index.html` file in any web browser.
+2. Open the `x-o.html` file in any web browser.
 3. Start playing by clicking on the squares.
 
 ---
