@@ -3,7 +3,7 @@ This is a simple **Tic-Tac-Toe (X/O)** game built using **HTML, CSS, and JavaScr
 
 ---
 ## Demo 📺
-![Demo](https://github.com/Mohamed-Silaya/X-O-Game/blob/main/X-O%20game.png)
+![Demo](https://github.com/Mohamed-Silaya/JS-Games/blob/main/X-O%20_%20game/X-O%20game.png)
 ---
 
 ## 🛠️ Technologies Used
