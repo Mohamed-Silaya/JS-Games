@@ -1,0 +1,160 @@
+/* Reset default browser styles and set global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding/border don't affect width/height */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* CSS Variables ,
+color pallet: https://colorhunt.co/palette/f5eedc27548a183b4edda853
+ */
+:root {
+    --color1: #F5EEDC;  
+    --color2: #27548A;  
+    --color3: #183B4E;  
+    --color4: #DDA853;  
+    --color5: #da8b15;  
+    --color6: #aa8973;  
+    --color7: #1b9dd1;  
+    --grid-cell: 6;    
+    --gap: 10px;        /* Default gap/spacing */
+    --time: .5s;        /* Transition duration */
+}
+
+/* Container occupies full screen height and centers its content */
+.container {
+    height: 100svh;             /* 100% of the small viewport height */
+    display: grid;              
+    place-items: center;        /* Center content horizontally and vertically */
+}
+
+/* Playground area where my main content */
+.playground {
+    background-color: var(--color1); 
+    width: 90vw;                     
+    height: 90vh;                    
+    border-radius: var(--gap);     
+}
+
+/* Modal overlay covering the entire screen */
+.model {
+    position: fixed;                          /* Sticks to viewport */
+    inset: 0;                                 /* top:0; right:0; bottom:0; left:0; */
+    background-color: rgba(43, 42, 38, 0.4);  
+    display: grid;                           /* Center modal content */
+    place-items: center;
+    visibility: hidden;                      
+    opacity: 0;                              
+    
+}
+
+/* Modal content box styling */
+.model_content {
+    display: flex;                         
+    flex-direction: column;                 /* Stack items vertically */
+    justify-content: center;                /* Center items vertically */
+    align-items: center;                    /* Center items horizontally */
+    row-gap: var(--gap);                    /* Vertical spacing between elements */
+    max-width: 50%;                         
+    max-height: 50%;                        
+    background-color: rgba(255, 255, 255, 0.9); 
+    border-radius: var(--gap);              
+}
+
+/* Modal heading (title) style */
+.model_heading {
+    font-size: 50px;      
+    color: var(--color5);  
+    margin-bottom: var(--gap);
+}
+
+/* Timer section inside modal */
+.model_time {
+    display: flex;                 /* Arrange timer items horizontally */
+    align-items: center;           /* Vertically center them */
+    column-gap: var(--gap);        /* Space between timer items */
+}
+
+/* Timer number/text styling */
+.model_time span {
+    font-size: 30px;      
+    color: var(--color6); 
+}
+
+/* Additional text inside modal */
+.model_text {
+    font-size: 20px;      
+    color: var(--color5); 
+    text-align: center;   
+}
+
+/* General button styling */
+.btn {
+    box-sizing: border-box;       /* Ensures padding is inside the box */
+    padding: 10px;                /* Space inside the button */
+    background-color: var(--color7); 
+    border: none;                 
+    border-radius: 20px;          
+    font-size: 20px;              
+    color: var(--color1);         
+    cursor: pointer;           
+}
+
+/* Feature section  */
+.features {
+    display: flex;               /* Arrange features horizontally */
+    align-items: center;         /* Align features vertically */
+    column-gap: var(--gap);      /* Space between features */
+}
+
+/* Timer text styling  */
+.timer {
+    font-size: 30px;            
+    color: var(--color2);       
+}
+
+/* Card styling */
+.card {
+    position: relative;
+    aspect-ratio: 1;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+
+/* ------------- */
+.card {
+    position: relative;
+    aspect-ratio: 1;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 90px;
+}
+
+.front {
+    background-color: var(--color2);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.back {
+    background-color: var(--color4);
+}

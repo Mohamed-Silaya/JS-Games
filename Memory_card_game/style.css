@@ -1,115 +1,295 @@
-/* Reset default browser styles and set global styles */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* Ensures padding/border don't affect width/height */
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* CSS Variables ,
-color pallet: https://colorhunt.co/palette/f5eedc27548a183b4edda853
- */
+html {
+  font-size: 62.5%;
+}
+
 :root {
-    --color1: #F5EEDC;  
-    --color2: #27548A;  
-    --color3: #183B4E;  
-    --color4: #DDA853;  
-    --color5: #da1515;  
-    --color6: #aa8973;  
-    --color7: #1b9dd1;  
-    --grid-cell: 6;    
-    --gap: 10px;        /* Default gap/spacing */
-    --time: .5s;        /* Transition duration */
+  --white: #fff;
+  --light-gray: #555;
+  --gray: #222;
+  --blue: #119ec9;
+  --grid-cell: 6;
+  --gap: 1rem;
+  --time: 0.5s;
 }
 
-/* Container occupies full screen height and centers its content */
 .container {
-    height: 100svh;             /* 100% of the small viewport height */
-    display: grid;              
-    place-items: center;        /* Center content horizontally and vertically */
+  height: 100svh;
+  display: grid;
+  place-items: center;
 }
 
-/* Playground area where my main content */
 .playground {
-    background-color: var(--color1); 
-    width: 90vw;                     
-    height: 90vh;                    
-    border-radius: var(--gap);     
+  background-color: #f7eedd;
+  width: 90vmin;
+  height: 90vmin;
+  border-radius: var(--gap);
+  display: grid;
+  gap: var(--gap);
+  padding: var(--gap);
 }
 
-/* Modal overlay covering the entire screen */
-.model {
-    position: fixed;                          /* Sticks to viewport */
-    inset: 0;                                 /* top:0; right:0; bottom:0; left:0; */
-    background-color: rgba(43, 42, 38, 0.4);  
-    display: grid;                           /* Center modal content */
-    place-items: center;
-    visibility: hidden;                      
-    opacity: 0;                              
-    
+.card {
+  background-color: var(--white);
+  box-shadow: 0 0 0.3rem #eee;
+  display: grid;
+  place-items: center;
+  border-radius: inherit;
+  cursor: pointer;
+  perspective: 100rem;
+  position: relative;
+  transform-style: preserve-3d;
 }
 
-/* Modal content box styling */
-.model_content {
-    display: flex;                         
-    flex-direction: column;                 /* Stack items vertically */
-    justify-content: center;                /* Center items vertically */
-    align-items: center;                    /* Center items horizontally */
-    row-gap: var(--gap);                    /* Vertical spacing between elements */
-    max-width: 50%;                         
-    max-height: 50%;                        
-    background-color: rgba(255, 255, 255, 0.9); 
-    border-radius: var(--gap);              
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform var(--time) linear;
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
 }
 
-/* Modal heading (title) style */
-.model_heading {
-    font-size: 50px;      
-    color: var(--color5);  
-    margin-bottom: var(--gap);
+.card.change .card-inner {
+  transform: rotateY(0);
 }
 
-/* Timer section inside modal */
-.model_time {
-    display: flex;                 /* Arrange timer items horizontally */
-    align-items: center;           /* Vertically center them */
-    column-gap: var(--gap);        /* Space between timer items */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
 }
 
-/* Timer number/text styling */
-.model_time span {
-    font-size: 30px;      
-    color: var(--color6); 
+.card-front {
+  background-color: white;
 }
 
-/* Additional text inside modal */
-.model_text {
-    font-size: 20px;      
-    color: var(--color5); 
-    text-align: center;   
+.card-back {
+  background-color: white;
+  transform: rotateY(180deg);
+
 }
 
-/* General button styling */
+.card.pause {
+  pointer-events: none;
+}
+
+.card.stop {
+  pointer-events: none;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  background-color: var(--white);
+  border-radius: inherit;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(119, 118, 115, 0.604);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--time) 1s;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: var(--gap);
+  width: 40rem;
+  aspect-ratio: 1;
+  background-color: rgba(255, 255, 255, 0.863);
+  border-radius: var(--gap);
+}
+
+.modal-heading {
+  font-size: 4rem;
+  color: var(--light-gray);
+  margin-bottom: var(--gap);
+}
+
+.modal-time {
+  display: flex;
+  align-items: center;
+  column-gap: var(--gap);
+}
+
+.modal-time > span {
+  font-size: 1.8rem;
+  color: var(--gray);
+}
+
+.modal-text {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--light-gray);
+}
+
+.wrong {
+  display: inline-block;
+  margin: 0.5rem;
+  font-size: 2.5rem;
+}
+
 .btn {
-    box-sizing: border-box;       /* Ensures padding is inside the box */
-    padding: 10px;                /* Space inside the button */
-    background-color: var(--color7); 
-    border: none;                 
-    border-radius: 20px;          
-    font-size: 20px;              
-    color: var(--color1);         
-    cursor: pointer;           
+  box-sizing: content-box;
+  padding: 0.5rem 1rem;
+  background-color: var(--blue);
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: var(--white);
+  margin-top: 2rem;
+  cursor: pointer;
 }
 
-/* Feature section  */
+.yes-btn,
+.cancel-btn {
+  margin-inline: 0.5rem;
+  width: 7rem;
+}
+
 .features {
-    display: flex;               /* Arrange features horizontally */
-    align-items: center;         /* Align features vertically */
-    column-gap: var(--gap);      /* Space between features */
+  display: flex;
+  align-items: center;
+  column-gap: 3rem;
 }
 
-/* Timer text styling  */
-.timer {
-    font-size: 30px;            
-    color: var(--color2);       
+.features .restart-btn {
+  margin: 0;
+  font-size: 1rem;
 }
+
+.timer {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.3rem;
+  color: var(--blue);
+}
+
+.timer span {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.6rem;
+  width: 2.7rem;
+}
+
+.timer span:last-child {
+  margin-left: 0.5rem;
+}
+
+.player-name {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border: 2px solid var(--blue);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  width: 200px;
+}
+
+.high-scores-btn {
+  margin-left: auto;
+}
+
+.score-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr 1fr 2fr;
+  gap: 1rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.score-header {
+  font-weight: bold;
+  background-color: #f0f0f0;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr 1fr 2fr;
+  gap: 1rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.scores-list {
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  margin: 1rem 0;
+}
+
+.close-btn {
+  margin-top: 1rem;
+}
+
+.mode-selector {
+  margin-left: 1rem;
+  padding: 0.3rem;
+  border: 2px solid var(--blue);
+  border-radius: 0.5rem;
+}
+
+.card .number {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--blue);
+  user-select: none;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --gap: 0.5rem;
+  }
+
+  .playground {
+    width: 95vmin;
+    height: 95vmin;
+  }
+
+  .modal-content {
+    width: 30rem;
+    text-align: center;
+  }
+
+  .card .number {
+    font-size: 2rem;
+  }
+
+  .score-header,
+  .score-item {
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 0.8rem;
+  }
+
+  .score-header span:nth-child(4),
+  .score-header span:nth-child(5),
+  .score-header span:nth-child(6),
+  .score-item span:nth-child(4),
+  .score-item span:nth-child(5),
+  .score-item span:nth-child(6) {
+    display: none;
+  }
+}
+
