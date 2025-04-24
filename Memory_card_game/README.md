@@ -73,6 +73,13 @@ Add new icons to the images/ folder (name them icon-1.png, icon-2.png, etc.).
 
 Change fonts or animations easily via style.css.
 
+## 👥 Team
+
+- [Mohamed-Silaya](https://github.com/Mohamed-Silaya) 
+- [MhmdMahmoudMohammedFouad ](https://github.com/MhmdMahmoudMohammedFouad) 
+- [EsraaAnwerIsmail](https://github.com/EsraaAnwerIsmail) 
+
+
 
 
 
