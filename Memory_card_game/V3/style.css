@@ -54,38 +54,6 @@ body {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.setup-form {
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border-radius: 1rem;
-  padding: 2rem;
-  max-width: 600px;
-  margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.player-name {
-  padding: 0.5rem;
-  font-size: 2rem;
-  border: 3px solid var(--primary-color);
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.select-cells-number,
-.mode-selector {
-  padding: 0.5rem;
-  font-size: 2rem;
-  border: 3px solid var(--primary-color);
-  border-radius: 0.5rem;
-  background-color: white;
-  text-align: center;
-
-}
-
 .instructions {
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
@@ -153,6 +121,14 @@ body {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: var(--primary-color);
+}
+
+.settings {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .playground {
@@ -240,7 +216,6 @@ body {
   opacity: 0;
   visibility: hidden;
   transition: opacity var(--time) 1s;
-  z-index: 100;
 }
 
 .model-content {
@@ -306,6 +281,21 @@ body {
   background-color: var(--btn-hover);
 }
 
+.yes-btn,
+.cancel-btn {
+  margin-inline: 0.5rem;
+  width: 7rem;
+}
+
+.cancel-btn {
+  background-color: #ccc;
+  color: #333;
+}
+
+.cancel-btn:hover {
+  background-color: #bbb;
+}
+
 .features {
   display: flex;
   align-items: center;
@@ -336,104 +326,34 @@ body {
   margin-left: 0.5rem;
 }
 
+.player-name {
+  padding: 0.5rem;
+  font-size: 2rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  width: 200px;
+  text-align: center;
+}
+
+.high-scores-btn {
+  margin-left: 1rem;
+}
+
+.select-cells-number,
+.mode-selector {
+  padding: 0.5rem;
+  font-size: 1.7rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 0.5rem;
+  background-color: white;
+}
+
 .card .number {
   font-size: 3rem;
   font-weight: bold;
   color: var(--primary-color);
   user-select: none;
-}
-
-/* High Scores Board Styles */
-.scores-model {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(119, 118, 115, 0.604);
-  display: grid;
-  place-items: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--time) 1s;
-  z-index: 100;
-}
-
-.scores-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  row-gap: var(--gap);
-  width: 80rem;
-  max-width: 90%;
-  background-color: var(--card-bg);
-  border-radius: var(--gap);
-  padding: 3rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.scores-heading {
-  font-size: 4rem;
-  color: var(--primary-color);
-  margin-bottom: var(--gap);
-  text-align: center;
-}
-
-.scores-list {
-  width: 100%;
-  max-height: 50rem;
-  overflow-y: auto;
-  margin-bottom: 2rem;
-}
-
-.score-header {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1rem;
-  padding: 1rem;
-  background-color: var(--primary-color);
-  color: white;
-  border-radius: var(--gap) var(--gap) 0 0;
-  font-weight: bold;
-}
-
-.score-item {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1rem;
-  padding: 1rem;
-  border-bottom: 1px solid #eee;
-}
-
-.score-item:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.close-btn-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-.close-btn {
-  width: 100%;
-  padding: 1rem;
-  font-size: 1.7rem;
-}
-
-@media (max-width: 768px) {
-  .score-header,
-  .score-item {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  
-  .score-header span:nth-child(4),
-  .score-header span:nth-child(5),
-  .score-header span:nth-child(6),
-  .score-item span:nth-child(4),
-  .score-item span:nth-child(5),
-  .score-item span:nth-child(6) {
-    display: none;
-  }
 }
 
 @media (max-width: 600px) {
@@ -455,12 +375,18 @@ body {
     font-size: 2rem;
   }
 
-  .scores-content {
-    padding: 2rem;
-    width: 95%;
+  .score-header,
+  .score-item {
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 0.8rem;
   }
 
-  .scores-heading {
-    font-size: 3rem;
+  .score-header span:nth-child(4),
+  .score-header span:nth-child(5),
+  .score-header span:nth-child(6),
+  .score-item span:nth-child(4),
+  .score-item span:nth-child(5),
+  .score-item span:nth-child(6) {
+    display: none;
   }
 }

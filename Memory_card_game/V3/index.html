@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Welcome Screen -->
+    <div class="welcome-screen">
+      <h1>Memory Match</h1>
+      <div class="instructions">
+        <h2>How to Play</h2>
+        <ul>
+          <li>Flip two cards at a time to find matching pairs</li>
+          <li>Remember the positions of cards you've seen</li>
+          <li>Complete the grid with the fewest mismatches possible</li>
+          <li>Your time and mistakes will be recorded</li>
+        </ul>
+      </div>
+      <button class="btn start-btn">Start Game</button>
+    </div>
+
+    <!-- Game Container -->
+    <div class="container">
+      <div class="game-header">
+        <h2 class="game-title">Memory Match</h2>
+        <input type="text" class="player-name" placeholder="Enter your name" />
+        <div class="settings">
+          <select name="choice" class="select-cells-number">
+            <option value="16" selected>4x4</option>
+            <option value="36">6x6</option>
+            <option value="64">8x8</option>
+          </select>
+          <select class="mode-selector">
+            <option value="fruits">🍇 Fruits</option>
+            <option value="numbers">🔢 Numbers</option>
+          </select>
+          <button class="btn high-scores-btn">High Scores</button>
+        </div>
+      </div>
+      <div class="playground"></div>
+      <div class="features">
+        <div class="timer"><span>00</span>min <span>00</span>sec</div>
+        <button class="btn restart-btn">New Game</button>
+      </div>
+      <div class="model">
+        <div class="model-content">
+          <h2 class="model-heading">Game Over</h2>
+          <div class="model-time">
+            <span>Time Spent: </span>
+          </div>
+          <h3 class="model-text">Wrong attempts: <span class="wrong">0</span></h3>
+          <button class="btn model-btn">Start Again</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
